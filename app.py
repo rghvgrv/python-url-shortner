@@ -4,6 +4,10 @@ import pyshorteners
 import datetime
 app = Flask(__name__)
 
+urlmapping = dict()
+
+urlmapping['tinyurl.com/23g6ep75'] = 'https://github.com/ByteByteGoHq/system-design-101?tab=readme-ov-file'
+
 @app.post('/api/shorten')
 def create_short_url():
     try:
@@ -23,15 +27,15 @@ def create_short_url():
     except Exception as e:
         return jsonify({'error':str(e)}),400
     
-@app.get('/api/shorten/<short_url>')
-def redirect_to_url(short_url):
-    try:
-        print(short_url)
-        shortener = pyshorteners.Shortener()
-        long_url = shortener.tinyurl.expand(short_url)
-        return redirect(long_url)
-    except Exception as e:
-        return f"Error expanding URL: {str(e)}", 400
+@app.get('/api/shorten/<alias>')
+def redirect_to_url(alias):
+    print(alias)
+    long_url = urlmapping.get(alias)  # Retrieve the long URL
+    print(long_url)
+    if long_url:
+        return redirect(long_url)  # Redirect to the original URL
+    else:
+        return jsonify({"error": "Alias not found"}), 404 
 
 
 
