@@ -91,20 +91,3 @@ curl -X POST http://127.0.0.1:5000/api/shorten \
 
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
-
-## Author
-
-[Your Name](https://github.com/rghvgrv)
-```
-
-### How to Use:
-- Save this content as `README.md` in the root of your repository.
-- Update `[Your Name]` with your actual name or GitHub profile link. 
-- Ensure your project includes the `app.py` file and any required dependencies as specified.
